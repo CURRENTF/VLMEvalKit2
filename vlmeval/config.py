@@ -345,6 +345,16 @@ api_models = {
         img_size=-1,
         img_detail="high",
     ),
+    # my custom model
+    "my_custom_model": partial(
+        GPT4V,
+        model="empty",
+        api_base="http://localhost:33715/v1/chat/completions",
+        temperature=0,
+        retry=10,
+        img_size=-1,
+        img_detail="high",
+    ),
     # Yi-Vision
     "Yi-Vision": partial(
         GPT4V,
