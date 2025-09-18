@@ -95,7 +95,7 @@ class ImageYORNDataset(ImageBaseDataset):
             data['score'] = (data['answer'].str.lower() == data['extracted'].str.lower())
         else:
             # data['score'] = (data['answer'] == data['extracted'])
-            data['score'] = (data['extracted'].lower() in data['answer'].lower())
+            data['score'] = (data['extracted'].str.lower() in data['answer'].str.lower())
         dump(data, storage)
 
         if dataset is not None and listinstr(['MME'], dataset):
