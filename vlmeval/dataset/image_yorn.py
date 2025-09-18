@@ -95,7 +95,12 @@ class ImageYORNDataset(ImageBaseDataset):
             data['score'] = (data['answer'].str.lower() == data['extracted'].str.lower())
         else:
             # data['score'] = (data['answer'] == data['extracted'])
-            data['score'] = (data['extracted'].str.lower() in data['answer'].str.lower())
+            # data['score'] = (data['extracted'].str.lower() in data['answer'].str.lower())
+            # 实现判断逻辑：extracted的小写是否在answer的小写中
+            data['score'] = data.apply(
+                lambda row: row['extracted'].lower() in row['answer'].lower(),
+                axis=1
+            )
         dump(data, storage)
 
         if dataset is not None and listinstr(['MME'], dataset):
