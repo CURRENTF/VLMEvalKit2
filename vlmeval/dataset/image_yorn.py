@@ -61,18 +61,20 @@ class ImageYORNDataset(ImageBaseDataset):
             data['extracted'] = [ans_map[x] for x in data['index']]
             unknown = data[data['extracted'] == 'Unknown']
 
-            model = judge_kwargs.get('model', 'exact_matching')
-            if model == 'exact_matching':
-                model = None
-            elif gpt_key_set():
-                model = build_judge(**judge_kwargs)
-                if not model.working():
-                    warnings.warn('OPENAI API is not working properly, will use exact matching for evaluation')
-                    warnings.warn(DEBUG_MESSAGE)
-                    model = None
-            else:
-                model = None
-                warnings.warn('OPENAI_API_KEY is not working properly, will use exact matching for evaluation')
+            # model = judge_kwargs.get('model', 'exact_matching')
+            # if model == 'exact_matching':
+            #     model = None
+            # elif gpt_key_set():
+            #     model = build_judge(**judge_kwargs)
+            #     if not model.working():
+            #         warnings.warn('OPENAI API is not working properly, will use exact matching for evaluation')
+            #         warnings.warn(DEBUG_MESSAGE)
+            #         model = None
+            # else:
+            #     model = None
+            #     warnings.warn('OPENAI_API_KEY is not working properly, will use exact matching for evaluation')
+            warnings.warn('判断题感觉没必要用api')
+            model = None
 
             if model is not None:
                 lt = len(unknown)
@@ -92,7 +94,8 @@ class ImageYORNDataset(ImageBaseDataset):
         if listinstr(['AMBER'], dataset):
             data['score'] = (data['answer'].str.lower() == data['extracted'].str.lower())
         else:
-            data['score'] = (data['answer'] == data['extracted'])
+            # data['score'] = (data['answer'] == data['extracted'])
+            data['score'] = (data['extracted'].lower() in data['answer'].lower())
         dump(data, storage)
 
         if dataset is not None and listinstr(['MME'], dataset):
