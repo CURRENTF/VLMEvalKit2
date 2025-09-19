@@ -190,7 +190,7 @@ def gpt_key_set():
     if openai_key is None:
         openai_key = os.environ.get('AZURE_OPENAI_API_KEY', None)
         return isinstance(openai_key, str)
-    return isinstance(openai_key, str) and openai_key.startswith('sk-')
+    return isinstance(openai_key, str)
 
 
 def apiok(wrapper):

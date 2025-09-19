@@ -57,7 +57,7 @@ class TaichuVLWrapper(BaseAPI):
 
         openai_key = os.environ.get('OPENAI_API_KEY', None)
         use_openai = os.environ.get('USE_OPENAI_EVAL', True)
-        self.use_openai_evaluate = (isinstance(openai_key, str) and openai_key.startswith('sk-') and use_openai)
+        self.use_openai_evaluate = (isinstance(openai_key, str) and use_openai)
 
         self.api_key = os.environ.get('TAICHU_API_KEY', key)
         self.api_url = url
@@ -237,7 +237,7 @@ class TaichuVLRWrapper(BaseAPI):
 
         openai_key = os.environ.get('OPENAI_API_KEY', None)
         use_openai = os.environ.get('USE_OPENAI_EVAL', True)
-        self.use_openai_evaluate = (isinstance(openai_key, str) and openai_key.startswith('sk-') and use_openai)
+        self.use_openai_evaluate = (isinstance(openai_key, str) and use_openai)
 
         self.api_key = os.environ.get('TAICHU_API_KEY', key)
         self.api_url = url
