@@ -22,6 +22,7 @@ def GPT_context_window(model):
         'gpt-3.5-turbo-0125': 16385,
         'gpt-3.5-turbo-1106': 16385,
         'gpt-3.5-turbo-instruct': 4096,
+        'glm-4-flash': 100000,
     }
     if model in length_map:
         return length_map[model]
@@ -105,7 +106,7 @@ class OpenAIWrapper(BaseAPI):
                 env_key = os.environ.get('OPENAI_API_KEY', '')
                 if key is None:
                     key = env_key
-                assert isinstance(key, str) and key.startswith('sk-'), (
+                assert isinstance(key, str), (
                     f'Illegal openai_key {key}. '
                     'Please set the environment variable OPENAI_API_KEY to your openai key. '
                 )

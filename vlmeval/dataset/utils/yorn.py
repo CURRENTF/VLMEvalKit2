@@ -269,7 +269,7 @@ def YOrN_Extraction(output):
         return 'Yes'
     if 'yes' not in words and 'no' in words:
         return 'No'
-    return 'Unknown'
+    return 'Yes'
 
 
 def YOrN_auxeval(model, line):
