@@ -227,30 +227,30 @@ def default_rating(data_file):
     return ret
 
 
-# def YOrN_match_prompt(line):
-#     tmpl = (
-#         'You are an AI assistant who will help me to match an answer with two options of a question. '
-#         'The options are only Yes / No. '
-#         'You are provided with a question and an answer, '
-#         'and you need to find which option (Yes / No) is most similar to the answer. '
-#         'If the meaning of all options are significantly different from the answer, output Unknown. '
-#         'Your should output a single word among the following 3 choices: Yes, No, Unknown.\n'
-#         'Example 1: \n'
-#         "Question: Is the word in this image 'Hello'?\nAnswer: The word in this image is 'Hello'.\nYour output: Yes\n"
-#         'Example 2: \n'
-#         "Question: Is the word in this image 'Hello'?\n"
-#         "Answer: The word in this image is not 'Hello'.\nYour output: No\n"
-#         'Example 3: \n'
-#         'Question: {}?\nAnswer: {}\nYour output: '
-#     )
-#     return tmpl.format(line['question'], line['prediction'])
-
-
 def YOrN_match_prompt(line):
     tmpl = (
-        'Question: {}?'
+        'You are an AI assistant who will help me to match an answer with two options of a question. '
+        'The options are only Yes / No. '
+        'You are provided with a question and an answer, '
+        'and you need to find which option (Yes / No) is most similar to the answer. '
+        'If the meaning of all options are significantly different from the answer, output Unknown. '
+        'Your should output a single word among the following 3 choices: Yes, No, Unknown.\n'
+        'Example 1: \n'
+        "Question: Is the word in this image 'Hello'?\nAnswer: The word in this image is 'Hello'.\nYour output: Yes\n"
+        'Example 2: \n'
+        "Question: Is the word in this image 'Hello'?\n"
+        "Answer: The word in this image is not 'Hello'.\nYour output: No\n"
+        'Example 3: \n'
+        'Question: {}?\nAnswer: {}\nYour output: '
     )
-    return tmpl.format(line['question'])
+    return tmpl.format(line['question'], line['prediction'])
+
+
+# def YOrN_match_prompt(line):
+#     tmpl = (
+#         'Question: {}?'
+#     )
+#     return tmpl.format(line['question'])
 
 
 # def YOrN_Extraction(output):
