@@ -260,8 +260,10 @@ class ImageMCQDataset(ImageBaseDataset):
 
         suffix = eval_file.split('.')[-1]
         model = judge_kwargs.get('model', 'exact_matching')
-        assert model in ['chatgpt-0125', 'exact_matching', 'gpt-4-0125', 'glm-4-flash']
-        name_str_map = {'chatgpt-0125': 'openai', 'gpt-4-0125': 'gpt4', 'glm-4-flash': 'openai'}
+        assert model in ['chatgpt-0125', 'exact_matching', 'gpt-4-0125', 'glm-4-flash', 'glm-4.5-air', 'glm-4.5', 'glm-4']
+        name_str_map = {'chatgpt-0125': 'openai', 'gpt-4-0125': 'gpt4',
+                        'glm-4-flash': 'openai', 'glm-4.5-air': 'openai',
+                        'glm-4': 'openai', 'glm-4.5': 'openai'}
         name_str = name_str_map[model] if model in name_str_map else model
 
         if model == 'exact_matching':
